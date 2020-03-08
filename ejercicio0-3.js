@@ -5,7 +5,7 @@ console.log('Ejercicio 0: ', Math.min.apply(null,numero));
 //Ejercicio 1
 var factura = [{
     "detalle" : {
-        "importeTotal": 34000,
+        "importeTotal": 0,
         "iva" : "Lima",
         "formaPago" : "Efectivo"
     },
@@ -34,11 +34,16 @@ var factura = [{
     ]
 }]
 
-factura.forEach((item, index) => {
-    console.log('Ejercicio 1: ', item.elementos);//valor de cada elemento
-    //console.log(index, item);//posición de cada elemento
-    //return item;
-})
+let importv = 0;
+for (let n of factura){
+    for(let m of n.elementos){
+        importv = (m.precio * m.cantidad) + importv //Sumando los importes
+    }
+    n.detalle['importeTotal']=importv; //actualiza el importe total de la factura
+}
+
+console.log('Ejercicio 1: ', factura);
+console.log('Ejercicio 1 (importe total de factura): ',importv);
 
 //Ejercicio 2
 let nombres = ['Martìn','Juan','Renato','Marìa'];
